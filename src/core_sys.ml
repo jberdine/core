@@ -33,7 +33,7 @@ let stat_check f ?follow_symlinks path =
     else
       `No
   with
-  | Unix.Unix_error ((Unix.EACCES|Unix.ELOOP), _, _)   -> `Unknown
+  | Unix.Unix_error ((Unix.EACCES|Unix.ELOOP|Unix.ENAMETOOLONG), _, _)   -> `Unknown
 ;;
 
 let file_exists = stat_check (fun _ -> true)
